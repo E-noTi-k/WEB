@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Популярные игры в Steam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #c04f75);
+      color: #333;
+      animation: fadeIn 1s;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    header, footer {
+      background-color: #007BFF;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    h2 {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      margin: 30px 0 10px;
+      color: #fff;
+      background-color: #333;
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-content: flex-start;
+      align-items: stretch;
+      column-gap: 30px;
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .flex-item {
+      flex: 1 1 250px;
+      align-self: stretch;
+      order: 0;
+
+      background-color: #ffffff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      min-width: 200px;
+      transition: transform 0.3s;
+    }
+
+    .flex-item:hover {
+      transform: scale(1.05);
+    }
+
+    .flex-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+    
+    .button_yellow {
+      background-color: rgb(232, 220, 5);
+      color: white;
+      padding: 10px 15px;
+      border: none;
+    }
+
+    .button:hover {
+      background-color: #005bb5;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    .highlight {
+      flex-grow: 2;
+      order: -1;
+    }
+    .nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #cceeff;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.burger span {
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  border-radius: 3px;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #007BFF;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    gap: 15px;
+    padding: 20px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .burger {
+    display: flex;
+  }
+}
+.burger {
+  z-index: 1100;
+}
+.nav-links {
+  z-index: 1000;
+}
+/* Product Card */
+.product-card {
+  max-width: 1000px;
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.product-image {
+  flex: 1 1 400px;
+  background: linear-gradient(to top, #306dbf, #f6c143);
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.product-info {
+  flex: 1 1 500px;
+  padding: 30px;
+}
+
+.product-info h2 {
+  font-size: 28px;
+  margin-top: 0;
+}
+
+.price {
+  text-align: right;
+}
+
+.price strong {
+  color: orange;
+  font-size: 22px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-left: 10px;
+}
+
+.product-info h3 {
+  margin-top: 0;
+  font-weight: normal;
+  color: #555;
+}
+
+.desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #444;
+}
+
+.size {
+  display: inline-block;
+  background: #eee;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.size.selected {
+  background: orange;
+  color: white;
+}
+
+.color {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+.color-orange { background: orange; }
+.color-pink { background: #f8c9ec; }
+.color-blue { background: #003e7e; }
+
+.add-to-cart {
+  background: orange;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.rating {
+  color: #555;
+  font-size: 14px;
+}
+
+.rating span {
+  color: #888;
+}
+
+/* Feedback Form */
+.feedback-form {
+  max-width: 600px;
+  margin: 50px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.feedback-form h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.feedback-form input[type="text"],
+.feedback-form input[type="email"],
+.feedback-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.attach-button {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-wrap {
+  text-align: right;
+}
+
+.submit-button {
+  background-color: #306dbf;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Популярные игры в Steam</h1>
+    <p>Подборка популярных, новинок и кооперативных игр</p>
+    <div class="nav-container">
+      <nav class="nav-links" id="navLinks">
+        <a href="#">Главная</a>
+        <a href="#">О нас</a>
+        <a href="#">Проекты</a>
+        <a href="#">Контакты</a>
+      </nav>
+      <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Раздел 1 -->
+  <h2>📈 Самый высокий онлайн</h2>
+  <div class="flex-container">
+    <div class="flex-item highlight">
+      <h3>Counter-Strike 2</h3>
+      <img src="image/Cs2.jpg" alt="Counter-Strike 2">
+      <p>Классика шутеров, миллионы игроков ежедневно.</p>
+      <a class="button" href="https://store.steampowered.com/app/730/" target="_blank">Подробнее</a>
+    </div>
+    <div class="flex-item">
+      <h3>Dota 2</h3>
+      <img src="image/Dota2.jpg" alt="Dota 2">
+      <p>MOBA-легенда с киберспортивной сценой.</p>
+      <a class="button" href="https://store.steampowered.com/app/570/" target="_blank">Подробнее</a>
+    </div>
+    <div class="flex-item">
+      <h3>Rust</h3>
+      <img src="image/Rust.jpg" alt="Rust">
+      <p>Жесткое выживание в онлайн-мире.</p>
+      <a class="button" href="https://store.steampowered.com/app/252490/" target="_blank">Подробнее</a>
+    </div>
+    <div class="flex-item">
+      <h3>GTA V</h3>
+      <img src="image/Gta5.jpg" alt="GTA V">
+      <p>Открытый мир, преступления и онлайн-миссии.</p>
+      <a class="button" href="https://store.steampowered.com/app/271590/" target="_blank">Подробнее</a>
+    </div>
+  </div>
+
+  <!-- Раздел 2 -->
+  <h2>🎮 Хиты и новинки</h2>
+  <div class="flex-container">
+    <div class="flex-item">
+      <h3>Cyberpunk 2077</h3>
+      <img src="image/2077.jpg" alt="Cyberpunk 2077">
+      <p>Будущее, технологии и модификации тела.</p>
+      <a class="button" href="https://store.steampowered.com/app/1091500/" target="_blank">Подробнее</a>
+    </div>
+    <div class="flex-item">
+      <h3>Red Dead Redemption 2</h3>
+      <img src="image/Rdr2.jpg" alt="Red Dead Redemption 2">
+      <p>Запад, драма, один из лучших сюжетов в играх.</p>
+      <a class="button" href="https://store.steampowered.com/app/1174180/" target="_blank">Подробнее</a>
+    </div>
+    <div class="flex-item">
+      <h3>The Witcher 3</h3>
+      <img src="image/Witcher 3.jpg" alt="The Witcher 3">
+      <p>Фэнтези с глубокой историей и охотой на монстров.</p>
+      <a class="button" href="https://store.steampowered.com/app/292030/" target="_blank">Подробнее</a>
+    </div>
+  </div>
+
+  <!-- Раздел 3 -->
+  <h2>🧨 Кооператив и мультиплеер</h2>
+  <div class="flex-container">
+    <div class="flex-item">
+      <h3>Palworld</h3>
+      <img src="image/Palword.jpg" alt="Palworld">
+      <p>Монстры + оружие = хаос и выживание с друзьями.</p>
+      <a class="button" href="https://store.steampowered.com/app/1623730/" target="_blank">Подробнее</a>
+    </div>
+    <div class="flex-item">
+      <h3>Helldivers 2</h3>
+      <img src="image/Helldrivers 2.jpg" alt="Helldivers 2">
+      <p>Кооперативный шутер про галактическую демократию.</p>
+      <a class="button" href="https://store.steampowered.com/app/553850/" target="_blank">Подробнее</a>
+    </div>
+    <div class="flex-item">
+      <h3>Phasmophobia</h3>
+      <img src="image/Phasma.jpg" alt="Phasmophobia">
+      <p>Охота на призраков в темных домах вместе с друзьями.</p>
+      <a class="button" href="https://store.steampowered.com/app/739630/" target="_blank">Подробнее</a>
+    </div>
+  </div>
+  
+  <!-- Adidas Product Section -->
+  <section class="product-card">
+    <div class="product-image">
+      <img src="image/Кроссовок.png" alt="Adidas Duramo">
+    </div>
+    <div class="product-info">
+      <h2>adidas</h2>
+      <div class="price">
+        <strong>$73.00</strong>
+        <span class="old-price">$135.00</span>
+      </div>
+      <h3>Кроссовки duramo</h3>
+      <p class="desc">Кроссовки adidas Performance duramo 7 выполнены из сетчатого текстиля с полимерными вставками, текстильная внутренняя отделка.</p>
+      <p class="desc">Детали: промежуточная подошва SUPERcloud™ обеспечивает мягкую амортизацию. Поддерживающая стелька из материала ЭВА; износостойкая подошва ADIWEAR™; мягкая съемная стелька с антимикробной пропиткой OrthoLite - для комфорта.</p>
+      
+      <p>Размер
+        <span class="size">40</span>
+        <span class="size">41</span>
+        <span class="size">42</span>
+        <span class="size selected">43</span>
+        <span class="size">44</span>
+      </p>
+  
+      <p>Цвет
+        <span class="color color-orange"></span>
+        <span class="color color-pink"></span>
+        <span class="color color-blue"></span>
+      </p>
+  
+      <button class="add-to-cart">Добавить в корзину 🛒</button>
+      <p class="rating">⭐⭐⭐⭐☆ <span>4.4 - 272 комментариев</span></p>
+    </div>
+  </section>
+  
+  <!-- Feedback Form -->
+  <section class="feedback-form">
+    <h2>ОБРАТНАЯ СВЯЗЬ</h2>
+    <p>Здесь Вы можете отправить нам сообщение</p>
+    <form>
+      <label>Ваше имя</label><br>
+      <input type="text" placeholder="Введите ваше имя"><br>
+      <label>E-mail</label><br>
+      <input type="email" placeholder="Введите ваш e-mail"><br>
+      <label>Сообщение</label><br>
+      <textarea placeholder="Введите ваше сообщение"></textarea><br>
+      <button type="button" class="attach-button">+ Прикрепить файл</button><br><br>
+      <label><input type="checkbox"> Я не робот</label><br><br>
+      <div class="submit-wrap">
+        <button type="submit" class="submit-button">Отправить</button>
+      </div>
+    </form>
+  </section>
+  
+
+  <footer>
+    <p>© 2025 Все права защищены. Steam™ — зарегистрированная торговая марка.</p>
+  </footer>
+  <script>
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+  
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  
+    // Автоматически скрываем меню при клике на ссылку
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
