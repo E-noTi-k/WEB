@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Просто сайт</title>
+        <link rel="icon" href="image/burnicon.ico">
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <h1>Это сайт</h1> <!-- Заголовок первого уровня -->
+    <a href = "flex.html">Flex</a>
+    <a href="rekrol.html">Рикролл</a> <!-- Ссылка на другую страницу -->
+    <p>Тут основа документа<b> Жирный</b></p> <!-- Параграф с жирным текстом -->
+    <p><u>Подчеркнутый </u><i>Курсив </i><s>Перечеркнутый</s></p> <!-- Параграф с разными стилями текста -->
+    <br>
+    <a href="image/Картинка.webp" target="_blank"> <!-- Ссылка для открытия изображения в новой вкладке -->
+        <img src="image/Картинка.webp" width="500" height="500" alt="Описание изображения"> <!-- Изображение с заданными размерами -->
+    </a>        
+    <a href="image/Картинка.webp" download class="button">Скачать изображение</a>
+    <h2><b>Необходимое ПО</b></h2> <!-- Заголовок второго уровня -->
+    <ol>
+        <!-- Нумерованный список необходимых программ -->
+        <li>Vcode</li>
+        <li>Google Chrome</li>
+        <li>OpenServer</li>
+    </ol>
+    <table> <!-- Таблица с данными -->
+        <tr>
+            <th rowspan="2">№</th> <!-- Заголовок с объединением строк -->
+            <th colspan="2">ФИО</th> <!-- Заголовок с объединением столбцов -->
+            <th rowspan="2">Город</th>
+        </tr>
+        <tr>
+            <th>Имя</th> <!-- Заголовок столбца -->
+            <th>Фамилия</th> <!-- Заголовок столбца -->
+        </tr>
+        <tr>
+            <td>1</td> <!-- Данные таблицы -->
+            <td>Иван</td>
+            <td>Иванов</td>
+            <td>Гродно</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Анна</td>
+            <td>Сидорова</td>
+            <td>Минск</td>
+        </tr>
+    </table>
+    
+    <div class="centered-text"> <!-- Центрированный блок для медиа -->
+        <video controls preload="metadata" width="1280" height="960"> <!-- Видеоплеер -->
+            <source type="video/mp4" src="media/video1.mp4"> <!-- Видеофайл -->
+        </video>
+        <audio controls> <!-- Аудиоплеер -->
+            <source src="media/Treat.mp3"> <!-- Аудиофайл -->
+        </audio>
+    </div>
+    
+    <h3>Анкета</h3> <!-- Заголовок третьего уровня -->
+    <form id="myForm" action="/submit" method="post"> <!-- Форма для отправки данных -->
+        <label for="name">Имя</label><br>
+        <input type="text" name="name" id="name" required><br><br> <!-- Поле для ввода имени -->
+    
+        <label>Пол:</label><br>
+        <input type="radio" name="gender" id="male" value="male"> <!-- Выбор пола -->
+        <label for="male">Мужской</label>
+        <input type="radio" name="gender" id="female" value="female">
+        <label for="female">Женский</label><br><br>
+    
+        <label for="birthdate">Дата рождения:</label><br>
+        <input type="date" id="birthdate" name="birthdate"><br><br> <!-- Поле для ввода даты рождения -->
+    
+        <label for="age">Возраст:</label><br>
+        <input type="number" id="age" name="age" value="0" min="0" readonly> <!-- Поле для возраста -->
+        <button type="button" onclick="changeAge(1)">+</button> <!-- Кнопка для увеличения возраста -->
+        <button type="button" onclick="changeAge(-1)">-</button> <!-- Кнопка для уменьшения возраста -->
+        <br><br>
+    
+        <input type="submit" value="Отправить"> <!-- Кнопка отправки формы -->
+        <button type="button" onclick="clearForm()">Очистить поля</button> <!-- Кнопка для очистки полей -->
+    </form>
+    <br>
+
+    <script>
+        // Функция для изменения возраста
+        function changeAge(delta) {
+            const ageInput = document.getElementById("age");
+            let currentAge = parseInt(ageInput.value, 10); // Получаем текущее значение возраста
+            currentAge = isNaN(currentAge) ? 0 : currentAge; // Проверка на NaN
+            currentAge += delta; // Изменение возраста
+            if (currentAge < 0) currentAge = 0; // Ограничение минимального возраста
+            ageInput.value = currentAge; // Обновление значения
+        }
+
+        // Функция для очистки полей формы
+        function clearForm() {
+            document.getElementById("myForm").reset(); // Сброс формы
+        }
+    </script>
+    
+    <p>Ссылка на Github <a href="https://github.com/">Github</a></p> <!-- Ссылка на GitHub -->
+    <p>Ссылка на почту <a href ="https://mail.google.com/mail/u/0/#inbox">Gmail</a></p><!-- Ссылка на Gmail -->
+    <footer>Нижний колонтитул страницы</footer> <!-- Нижний колонтитул -->
+
+    <button class="button fixed-button" id="scrollDown" onclick="scrollToBottom()">Вниз</button><!-- Кнопка скролла вниз-->
+    <button class="button fixed-button" id="scrollUp" onclick="scrollToTop()">Вверх</button><!-- Кнопка скролла вверх-->
+
+    <script>
+        // Функция для прокрутки вниз
+        function scrollToBottom() {
+            window.scrollTo({
+                top: document.body.scrollHeight, // Прокрутка до конца страницы
+                behavior: 'smooth' // Плавная прокрутка
+            });
+        }
+
+        // Функция для прокрутки вверх
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0, // Прокрутка в начало страницы
+                behavior: 'smooth' // Плавная прокрутка
+            });
+        }
+    </script>
+</body>
+</html>

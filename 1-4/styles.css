@@ -1,0 +1,148 @@
+/* Импорт шрифтов */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #187dd6;
+    color: #333;
+    background-image: linear-gradient(to right, #e0f7fa, #c04f75);
+    animation: fadeIn 1s;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    color: #ff0000;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+#myForm {
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+a {
+    color: #ff00e1;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+    color: #89090957;
+}
+
+b {
+    font-weight: bold;
+}
+i {
+    font-style: italic;
+}
+s {
+    text-decoration: line-through;
+}
+
+img {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 1.4s;
+}
+img:hover {
+    transform: scale(1.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+    border: 1px solid #000000;
+    text-align: left;
+}
+th {
+    background-color: #ff0000;
+}
+
+.button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.button:hover {
+    background-color: #5784b4;
+}
+
+ul {
+    list-style-type: none;
+}
+li::before {
+    content: "✔️";
+    margin-right: 5px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fixed-button {
+    position: fixed;
+    right: 20px;
+    z-index: 1000;
+}
+
+#scrollDown {
+    bottom: 20px;
+}
+#scrollUp {
+    bottom: 70px;
+}
+.flex-container {
+    display: flex;                   /* 1. Включаем Flexbox */
+    flex-direction: row;            /* 2. Горизонтальное расположение */
+    flex-wrap: wrap;                /* 3. Разрешаем перенос на новую строку */
+    flex-flow: row wrap;            /* 4. Сокращение для direction и wrap */
+    justify-content: center;        /* 5. Выравнивание по горизонтали */
+    align-content: flex-start;      /* 6. Выравнивание строк контейнера */
+    align-items: stretch;           /* 7. Высота блоков — на всю доступную высоту */
+    column-gap: 30px;               /* 8. Отступы между колонками */
+    gap: 30px;                      /* 9. Отступы и по колонкам, и по строкам */
+    padding: 20px;
+}
+  
+  .flex-item {
+    flex-grow: 1;                   /* 10. Может расширяться */
+    flex-shrink: 1;                 /* 11. Может сжиматься */
+    flex-basis: 250px;              /* 12. Базовая ширина */
+    flex: 1 1 250px;                /* 13. Сокращение для grow shrink basis */
+    align-self: stretch;           /* 14. Выравнивание по вертикали (можно заменить на center, flex-start и т.д.) */
+    order: 0;                       /* 15. Порядок в визуальном отображении */
+
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    min-width: 150px;
+    transition: transform 0.3s;
+}
+
+  

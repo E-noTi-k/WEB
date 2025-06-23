@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Популярные игры в Steam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 1920px;
+      height: 1080px;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #c04f75);
+      color: #333;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    header, footer {
+      width: 1920px;
+      background-color: #007BFF;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    h2 {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      margin: 30px auto 10px;
+      color: #fff;
+      background-color: #333;
+      padding: 10px;
+      border-radius: 10px;
+      width: 600px;
+    }
+
+    .flex-container {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      padding: 20px;
+      width: 1920px;
+      border: 1px solid #333;
+      justify-content: center;
+    }
+
+    .flex-item {
+      width: 300px;
+      height: 480px;
+      background-color: #ffffff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .flex-item:hover {
+      transform: scale(1.05);
+    }
+
+    .flex-item img {
+      width: 100%;
+      height: 180px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      object-fit: cover;
+    }
+
+    .button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #005bb5;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    .highlight {
+      border: 2px solid gold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Популярные игры в Steam</h1>
+    <p>Подборка популярных, новинок и кооперативных игр</p>
+  </header>
+
+  <!-- Раздел 1 -->
+  <h2>📈 Самый высокий онлайн</h2>
+  <div class="flex-container">
+    <div class="flex-item highlight">
+      <h3>Counter-Strike 2</h3>
+      <img src="image/Cs2.jpg" alt="Counter-Strike 2">
+      <p>Классика шутеров, миллионы игроков ежедневно.</p>
+      <a class="button" href="https://store.steampowered.com/app/730/" target="_blank">Подробнее</a>
+    </div>
+    <div class="flex-item">
+      <h3>Dota 2</h3>
+      <img src="image/Dota2.jpg" alt="Dota 2">
+      <p>MOBA-легенда с киберспортивной сценой.</p>
+      <a class="button" href="https://store.steampowered.com/app/570/" target="_blank">Подробнее</a>
+    </div>
+    <div class="flex-item">
+      <h3>Rust</h3>
+      <img src="image/Rust.jpg" alt="Rust">
+      <p>Жесткое выживание в онлайн-мире.</p>
+      <a class="button" href="https://store.steampowered.com/app/252490/" target="_blank">Подробнее</a>
+    </div>
+    <div class="flex-item">
+      <h3>GTA V</h3>
+      <img src="image/Gta5.jpg" alt="GTA V">
+      <p>Открытый мир, преступления и онлайн-миссии.</p>
+      <a class="button" href="https://store.steampowered.com/app/271590/" target="_blank">Подробнее</a>
+    </div>
+  </div>
+
+  <!-- Раздел 2 -->
+  <h2>🎮 Хиты и новинки</h2>
+  <div class="flex-container">
+    <div class="flex-item">
+      <h3>Cyberpunk 2077</h3>
+      <img src="image/2077.jpg" alt="Cyberpunk 2077">
+      <p>Будущее, технологии и модификации тела.</p>
+      <a class="button" href="https://store.steampowered.com/app/1091500/" target="_blank">Подробнее</a>
+    </div>
+    <div class="flex-item">
+      <h3>Red Dead Redemption 2</h3>
+      <img src="image/Rdr2.jpg" alt="Red Dead Redemption 2">
+      <p>Запад, драма, один из лучших сюжетов в играх.</p>
+      <a class="button" href="https://store.steampowered.com/app/1174180/" target="_blank">Подробнее</a>
+    </div>
+    <div class="flex-item">
+      <h3>The Witcher 3</h3>
+      <img src="image/Witcher 3.jpg" alt="The Witcher 3">
+      <p>Фэнтези с глубокой историей и охотой на монстров.</p>
+      <a class="button" href="https://store.steampowered.com/app/292030/" target="_blank">Подробнее</a>
+    </div>
+  </div>
+
+  <!-- Раздел 3 -->
+  <h2>🧨 Кооператив и мультиплеер</h2>
+  <div class="flex-container">
+    <div class="flex-item">
+      <h3>Palworld</h3>
+      <img src="image/Palword.jpg" alt="Palworld">
+      <p>Монстры + оружие = хаос и выживание с друзьями.</p>
+      <a class="button" href="https://store.steampowered.com/app/1623730/" target="_blank">Подробнее</a>
+    </div>
+    <div class="flex-item">
+      <h3>Helldivers 2</h3>
+      <img src="image/Helldrivers 2.jpg" alt="Helldivers 2">
+      <p>Кооперативный шутер про галактическую демократию.</p>
+      <a class="button" href="https://store.steampowered.com/app/553850/" target="_blank">Подробнее</a>
+    </div>
+    <div class="flex-item">
+      <h3>Phasmophobia</h3>
+      <img src="image/Phasma.jpg" alt="Phasmophobia">
+      <p>Охота на призраков в темных домах вместе с друзьями.</p>
+      <a class="button" href="https://store.steampowered.com/app/739630/" target="_blank">Подробнее</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Все права защищены. Steam™ — зарегистрированная торговая марка.</p>
+  </footer>
+
+</body>
+</html>

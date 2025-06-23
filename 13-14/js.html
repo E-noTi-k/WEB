@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Подготовительное задание</title>
+  <style>
+    .invalid {
+      border: 2px solid red;
+      background-color: #ffe5e5;
+    }
+    .tooltip {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+      height: 14px;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .product-section {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: 20px auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .product-section img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .product-section h3 {
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+    .product-section p {
+      color: #555;
+    }
+    .feedback-form {
+      background-color: #fff;
+      padding: 20px;
+      margin: 40px auto;
+      max-width: 500px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .feedback-form h2 {
+      margin-bottom: 15px;
+    }
+    .feedback-form label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    .feedback-form input, .feedback-form textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    .feedback-form button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .feedback-form button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <p id="fio">Лабович Алексей Владимирович</p>
+  <div id="birthdate">18.11.2006</div>
+  <img src="Кроссовок.png" alt="Пример изображения" />
+  <p id="cookieInfo"></p>
+
+  <!-- Feedback Form -->
+  <div class="feedback-form">
+    <h2>Обратная связь</h2>
+    <form id="userForm" novalidate>
+      <label for="name">Имя:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" maxlength="30" required />
+      <div class="tooltip" id="emailError"></div>
+
+      <label for="message">Сообщение:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Отправить</button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // === 1. Размер документа и вывод каждые 5 секунд ===
+      function showDocumentInfo() {
+        const width = document.documentElement.scrollWidth;
+        const height = document.documentElement.scrollHeight;
+       //alert((`Размер документа: ${width}x${height}`));
+      }
+      showDocumentInfo();
+      setInterval(showDocumentInfo, 5000);
+
+      // === 2. Удаление элемента №1 при щелчке ===
+      const fioElement = document.getElementById('fio');
+      fioElement.addEventListener('click', () => {
+        fioElement.remove();
+      });
+
+      // === 3. Стилизация элемента №2 по клику ===
+      const birthdate = document.getElementById('birthdate');
+      birthdate.addEventListener('click', () => {
+        birthdate.style.color = 'red';
+        birthdate.style.backgroundColor = 'yellow';
+        birthdate.style.fontFamily = 'Arial';
+        birthdate.style.fontWeight = 'bold';
+        birthdate.style.fontSize = '14px';
+        birthdate.style.border = '2px solid blue';
+      });
+
+      // === 4. Проверка включены ли cookie ===
+      const cookieInfo = document.getElementById('cookieInfo');
+      cookieInfo.textContent = navigator.cookieEnabled
+        ? 'Cookie включены в вашем браузере.'
+        : 'Cookie отключены в вашем браузере.';
+
+      // === 5. Закрыть окно через 2 секунды ===
+     /* setTimeout(() => {
+  window.close();
+}, 2000);*/
+
+      // === 6. Валидация формы ===
+      const form = document.getElementById('userForm');
+      const emailInput = document.getElementById('email');
+      const emailError = document.getElementById('emailError');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let valid = true;
+
+        emailError.textContent = '';
+        emailInput.classList.remove('invalid');
+
+        const value = emailInput.value.trim();
+
+        if (value === '') {
+          emailError.textContent = 'Поле обязательно для заполнения.';
+          valid = false;
+        }
+        else if (value.length > 30) {
+          emailError.textContent = 'Email не должен превышать 30 символов.';
+          valid = false;
+        }
+        else {
+          const allowedDomains = ['gmail.com', 'mail.ru', 'yandex.ru', 'yahoo.com', 'outlook.com'];
+          const basicEmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          if (!basicEmailRegex.test(value)) {
+            emailError.textContent = 'Введите корректный email.';
+            valid = false;
+          } else {
+            const domain = value.split('@')[1].toLowerCase();
+            if (!allowedDomains.includes(domain)) {
+              emailError.textContent = `Допустимы только домены: ${allowedDomains.join(', ')}.`;
+              valid = false;
+            }
+          }
+        }
+
+        if (!valid) {
+          emailInput.classList.add('invalid');
+        } else {
+          alert("Форма успешно отправлена!");
+          form.reset();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
